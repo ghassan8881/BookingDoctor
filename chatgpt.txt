@@ -1,0 +1,4 @@
+i want update the code to divide the available slotes to three sections (available =0 - booked=2  - pending=1)  accordding the value of status for each slot
+and  appears all slots (available - booked  - pending) and add unbooked button for each booked slot to make value of status = 0  and add process button 
+for pending slot to confirm the book (make value of status = 2) or unbooked (make value of status = 0)
+ 
