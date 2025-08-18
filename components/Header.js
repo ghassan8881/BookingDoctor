@@ -74,18 +74,18 @@ export default function Header() {
               <span className="hidden sm:inline">
                 {/* Hello, {session.user.name || session.user.email} */}
                 {/* Hello, {user.FullName} */}
-                {user?.Role == "doctor"
+                {user.Role == "doctor"
                   ? locale == "ar"
-                    ? `مرحباً الطبيب ${user?.FullName_ar}`
-                    : `Hello Dr. ${user?.FullName}`
+                    ? `مرحباً الطبيب ${user.FullName_ar}`
+                    : `Hello Dr. ${user.FullName}`
                   : locale == "ar"
-                  ? `مرحباً  ${user?.FullName_ar}`
-                  : `Hello  ${user?.FullName}`}
+                  ? `مرحباً  ${user.FullName_ar}`
+                  : `Hello  ${user.FullName}`}
               </span>
               {/* Add user avatar if available */}
-              {session.user?.image && (
+              {session.user.image && (
                 <img
-                  src={session.user?.image}
+                  src={session.user.image}
                   alt="User avatar"
                   className="w-8 h-8 rounded-full"
                 />
