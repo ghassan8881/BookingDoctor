@@ -12,11 +12,18 @@ export default function Header() {
   const t = useTranslations("Home");
   const locale = useLocale();
 
-  const { data: session, status } = useSession();
-  const { user } = useUser();
+  // const { data: session, status } = useSession();
+  // const { user } = useUser();
+  const { data: session, status: sessionStatus } = useSession();
+  const { user, loading: userLoading, status } = useUser();
+
   console.log(user, "🚀 ~ Header ~ session:13", session);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const loading = status === "loading";
+
+  if (sessionStatus === "loading" || userLoading) {
+    return <div className="bg-gray-800 p-4">Loading...</div>;
+  }
 
   return (
     <header className="bg-gray-800 text-white p-4">
@@ -74,13 +81,17 @@ export default function Header() {
               <span className="hidden sm:inline">
                 {/* Hello, {session.user.name || session.user.email} */}
                 {/* Hello, {user.FullName} */}
-                {user.Role == "doctor"
-                  ? locale == "ar"
-                    ? `مرحباً الطبيب ${user.FullName_ar}`
-                    : `Hello Dr. ${user.FullName}`
-                  : locale == "ar"
-                  ? `مرحباً  ${user.FullName_ar}`
-                  : `Hello  ${user.FullName}`}
+                {user
+                  ? user.Role === "doctor"
+                    ? locale === "ar"
+                      ? `مرحباً الطبيب ${user.FullName_ar}`
+                      : `Hello Dr. ${user.FullName}`
+                    : locale === "ar"
+                    ? `مرحباً ${user.FullName_ar}`
+                    : `Hello ${user.FullName}`
+                  : locale === "ar"
+                  ? "مرحباً ضيف"
+                  : "Hello Guest"}{" "}
               </span>
               {/* Add user avatar if available */}
               {session.user.image && (
