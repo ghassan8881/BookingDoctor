@@ -29,7 +29,8 @@
     "i18n/routing.js",
     "components/NavBar.jsx",
     "components/LocaleSwitcherSelect.jsx",
-    "components/LocaleSwitcher.jsx"
+    "components/LocaleSwitcher.jsx",
+    "i18n/request.js"
   ],
   "exclude": ["node_modules"]
 }
